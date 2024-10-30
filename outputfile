@@ -2,6 +2,7 @@ I am the child about to execute absolute command
 total 36
 -rw-r--r-- 1 joshua joshua    49 Oct 29 16:41 Makefile
 -rw-r--r-- 1 joshua joshua    26 Oct 29 16:39 README.md
--rw------- 1 joshua joshua    49 Oct 29 20:46 outputfile
--rwxr-xr-x 1 joshua joshua 16696 Oct 29 20:45 redirect
--rw-r--r-- 1 joshua joshua  3136 Oct 29 20:45 redirect.c
+-rw------- 1 joshua joshua     0 Oct 29 22:47 inputfile
+-rw------- 1 joshua joshua    49 Oct 29 22:47 outputfile
+-rwxr-xr-x 1 joshua joshua 16824 Oct 29 22:47 redirect
+-rw-r--r-- 1 joshua joshua  3379 Oct 29 22:46 redirect.c

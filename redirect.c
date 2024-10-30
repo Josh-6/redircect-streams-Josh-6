@@ -43,7 +43,15 @@ void break_into_words(char *cmd, char *child_arguments[], char break_char)
 void find_absolute_path(char *command, char *absolute_path_to_command)
 {
     strcpy(absolute_path_to_command, command);
-    char path = getenv("Path");
+    char* path = getenv("PATH");
+
+    char* directory = strtok(path, ":");
+
+    while (directory != NULL)
+    {
+
+        directory = strtok(NULL, ":");
+    }
 
     if (path != NULL) {
         printf("PATH: %s\n", path);
@@ -79,7 +87,7 @@ int main(int argc, char *argv[])
     find_absolute_path(child_arguments[0], absolute_path_to_command);
 
     
-    int input_fd = open(argv[3], O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR);
+    int input_fd = open(argv[1], O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR | S_IWUSR);
     if (input_fd == -1)
     {
         fprintf(stderr, "Failed to open %s\n", argv[3]);
@@ -97,6 +105,10 @@ int main(int argc, char *argv[])
     int pid = fork();
     if (pid == 0)
     {
+        // Stdin = input_fd
+        dup2(input_fd, STDOUT_FILENO); 
+        close(input_fd);
+
         // Stdout = output_fd
         dup2(output_fd, STDOUT_FILENO); 
         close(output_fd);
